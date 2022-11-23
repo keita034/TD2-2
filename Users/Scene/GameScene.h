@@ -34,36 +34,6 @@ private:
 
 	std::unique_ptr<Camera> camera;
 
-	std::unique_ptr<Sprite3D> sprite;
-	std::unique_ptr<Sprite2D> sprite2D;
-
-	float frame = 0.0f;
-
-	TextureData texData;
-	TextureData texData2D;
-
-	Transform texTrans;
-	Transform texTrans2;
-	Transform texTrans2D;
-
-	Button* button = nullptr;
-	Cursor* cursor = nullptr;
-
-	TextureData texCursor;
-	Transform texCursorTrans;
-
-	int sceneNum = 0;
-
-	std::unique_ptr<fbxModel>model;
-
-	std::unique_ptr<fbxAnimation>animatio;
-
-	Transform modelTrans;
-
-	uint64_t fr = 0;
-
-	std::unique_ptr<objModel> objModel;
-
 public:
 
 	GameScene();
