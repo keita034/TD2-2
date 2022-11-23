@@ -33,7 +33,7 @@ void PostEffect::PostInitialize()
 	indexBuffer = std::make_unique<IndexBuffer>();
 	indexBuffer->Create(6);
 
-	lutTexture = TextureManager::Load("Resources/Lut/lut_default.png");
+	lutTexture = TextureManager::Load("Resources/Lut/02 –¾‚é‚­ƒJƒ‰ƒtƒ‹.png");
 
 	lutSizeBuff = std::make_unique<ConstantBuffer>();
 	lutSizeBuff->Create(sizeof(lutSize));

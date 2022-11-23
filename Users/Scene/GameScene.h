@@ -23,7 +23,7 @@
 
 #include"Player.h"
 #include"Enemy.h"
-
+#include"PostEffect.h"
 
 class GameScene
 {
@@ -117,6 +117,11 @@ private:
 	uint32_t titleHandle = 0;
 	uint32_t damageHandle = 0;
 	uint32_t attackHandle = 0;
+
+	TextureData gameLutTexture;
+	TextureData titleLutTexture;
+	TextureData resultLutTexture;
+
 public:
 
 	GameScene();
@@ -130,7 +135,7 @@ public:
 	/// <summary>
 	/// XVˆ—
 	/// </summary>
-	void Update();
+	void Update(PostEffect* postEffect);
 
 	/// <summary>
 	/// •`‰æ

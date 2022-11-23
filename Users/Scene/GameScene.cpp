@@ -189,11 +189,18 @@ void GameScene::Initialize()
 	attackHandle = audio->LoadAudio("Resources/attack.mp3");
 
 	audio->PlayWave(titleHandle,true);
-
+	gameLutTexture = TextureManager::Load("Resources/Lut/03 明るくカラフル もっとA.png");
+	titleLutTexture = TextureManager::Load("Resources/Lut/02 明るくカラフル.png");
+	resultLutTexture = TextureManager::Load("Resources/Lut/lut_default.png");
 }
 
-void GameScene::Update()
+void GameScene::Update(PostEffect* postEffect)
 {
+	//ライトの光線方向設定
+	AliceMathF::Vector3 rightDir = { 10.0f,3.0f,5.0f };
+	light->SetLightDir(rightDir);
+	light->Update();
+
 	switch (scene)
 	{
 	case 0:
@@ -205,7 +212,7 @@ void GameScene::Update()
 			audio->StopWave(titleHandle);
 			audio->PlayWave(gameHandle,true);
 
-
+			postEffect->SetLutTexture(gameLutTexture);
 		}
 		break;
 
@@ -213,6 +220,7 @@ void GameScene::Update()
 		if (input->TriggerPush(DIK_SPACE)) {
 			audio->PlayWave(clickHandle);
 			audio->PlayWave(titleHandle, true);
+			postEffect->SetLutTexture(titleLutTexture);
 
 			for (size_t i = 0; i < 3; i++)
 			{
@@ -255,8 +263,9 @@ void GameScene::Update()
 			player->fakeWeaponWorldTransform.rotation = AliceMathF::Vector3(0, 0, 0);
 			player->weaponWorldTransform.rotation = AliceMathF::Vector3(0, 0, 0);
 
-
 			player->Update();
+			player->attackFlag = 0;
+			player->junpAttackFlag = 0;
 			viewPos = AliceMathF::Vector3(0, 0, 0);
 			rot = 0;
 			gameTimer = 0;
@@ -406,6 +415,7 @@ void GameScene::Update()
 		if (enemy->scene == 5) {
 			scene = 2;
 			audio->StopWave(gameHandle);
+			postEffect->SetLutTexture(resultLutTexture);
 		}
 
 
@@ -465,7 +475,7 @@ void GameScene::Draw()
 		sprite[2]->Draw(spriteTrans[2]);
 
 		if (player->playerCharge >= 100) {
-			spriteTrans[3].translation = { 470, 500,0 };
+			spriteTrans[3].translation = { 470, 550,0 };
 			sprite[3]->SetSize({ 400, 122 });
 			sprite[3]->Draw(spriteTrans[3]);
 		}

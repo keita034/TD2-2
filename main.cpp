@@ -106,7 +106,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		input->Update();
 		audioManager->Update();
 
-		gameScene->Update();
+		gameScene->Update(postEffect.get());
 
 		//•`‰æˆ—
 		postEffect->PreDrawScen();
