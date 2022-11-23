@@ -271,6 +271,19 @@ namespace AliceMathF
 		Matrix4 RotY;
 		Matrix4 RotZ;
 
+		RotZ.MakeRotationZ(Rotat.z*AliceMathF::Deg2Rad);
+		RotX.MakeRotationX(Rotat.x * AliceMathF::Deg2Rad);
+		RotY.MakeRotationY(Rotat.y * AliceMathF::Deg2Rad);
+
+		*this = RotZ * RotX * RotY;
+	}
+
+	void Matrix4::MakeRotation2(const Vector3& Rotat)
+	{
+		Matrix4 RotX;
+		Matrix4 RotY;
+		Matrix4 RotZ;
+
 		RotZ.MakeRotationZ(Rotat.z);
 		RotX.MakeRotationX(Rotat.x);
 		RotY.MakeRotationY(Rotat.y);

@@ -328,5 +328,7 @@ namespace AliceMathF
 
 	// •ª—£²‚É“Š‰e‚³‚ê‚½²¬•ª‚©‚ç“Š‰eü•ª’·‚ğZo
 	float LenSegOnSeparateAxis(const Vector3* Sep, const Vector3* e1, const Vector3* e2, const Vector3* e3 = 0);
+
+	float FieldOfViewY(float focalLengs, float sensor);
 };
 

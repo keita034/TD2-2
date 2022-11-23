@@ -43,7 +43,7 @@ public:
 	/// s—ñ‚ğ“]‘—‚·‚é
 	/// </summary>
 	void TransUpdate(Camera* camera);
-
+	void TransUpdate2(Camera* camera);
 	void Update();
 
 	void MakeWorldMatrix();

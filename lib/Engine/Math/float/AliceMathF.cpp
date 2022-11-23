@@ -519,4 +519,9 @@ namespace AliceMathF
 		float r3 = e3 ? (AliceMathF::Abs(Sep->Dot(*e3))) : 0;
 		return r1 + r2 + r3;
 	}
+
+	float FieldOfViewY(float focalLengs, float sensor)
+	{
+		return 2 * atan(sensor / (2 * focalLengs));
+	}
 }

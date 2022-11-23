@@ -309,6 +309,15 @@
     <ClInclude Include="lib\Engine\2D\PostEffect\PostEffect.h">
       <Filter>Engine\ヘッダー ファイル\2D\PostEffect</Filter>
     </ClInclude>
+    <ClInclude Include="Users\Player\Player.h">
+      <Filter>User\ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Users\Player\PlayerBullet.h">
+      <Filter>User\ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Users\Enemy\Enemy.h">
+      <Filter>User\ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ALICE.rc">
@@ -563,6 +572,15 @@
     </ClCompile>
     <ClCompile Include="lib\Engine\2D\PostEffect\PostEffect.cpp">
       <Filter>Engine\ソース ファイル\2D\PostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Users\Player\Player.cpp">
+      <Filter>User\ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Users\Player\PlayerBullet.cpp">
+      <Filter>User\ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Users\Enemy\Enemy.cpp">
+      <Filter>User\ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

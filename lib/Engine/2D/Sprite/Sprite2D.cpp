@@ -15,6 +15,9 @@ void Sprite2D::Initialize(const TextureData& textureData)
 	trimmingRange.z = static_cast<float>(texture.width);
 	trimmingRange.w = static_cast<float>(texture.height);
 
+	spriteSize.x = static_cast<float>(texture.width);
+	spriteSize.y = static_cast<float>(texture.height);
+
 	CreatVertexIndexBuffer();
 }
 
@@ -25,10 +28,10 @@ void Sprite2D::Draw(Transform& transform, BlendMode blend, Material* material)
 	isFlipX = flipX ? -1.0f : 1.0f;
 	isFlipY = flipY ? -1.0f : 1.0f;
 
-	float left = ((0.0f - anchorPoint.x) * static_cast<float>(texture.width)) * isFlipX;
-	float right = ((1.0f - anchorPoint.x) * static_cast<float>(texture.width)) * isFlipX;
-	float top = ((0.0f - anchorPoint.y) * static_cast<float>(texture.height)) * isFlipY;
-	float bottom = ((1.0f - anchorPoint.y) * static_cast<float>(texture.height)) * isFlipY;
+	float left = ((0.0f - anchorPoint.x) * static_cast<float>(spriteSize.x)) * isFlipX;
+	float right = ((1.0f - anchorPoint.x) * static_cast<float>(spriteSize.x)) * isFlipX;
+	float top = ((0.0f - anchorPoint.y) * static_cast<float>(spriteSize.y)) * isFlipY;
+	float bottom = ((1.0f - anchorPoint.y) * static_cast<float>(spriteSize.y)) * isFlipY;
 
 	float texLeft = trimmingRange.x / static_cast<float>(texture.width);
 	float texTop = trimmingRange.y / static_cast<float>(texture.height);

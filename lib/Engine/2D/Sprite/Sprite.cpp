@@ -77,6 +77,14 @@ void Sprite::SetTex(const TextureData& textureData)
 	texture = textureData;
 	trimmingRange.z = static_cast<float>(texture.width);
 	trimmingRange.w = static_cast<float>(texture.height);
+	spriteSize.x = static_cast<float>(texture.width);
+	spriteSize.y = static_cast<float>(texture.height);
+}
+
+void Sprite::SetSize(const AliceMathF::Vector2& size)
+{
+	spriteSize.x = size.x;
+	spriteSize.y = size.y;
 }
 
 Sprite2D* Sprite::Create2DSprite(const TextureData& textureData)

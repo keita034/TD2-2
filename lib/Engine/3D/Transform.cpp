@@ -20,15 +20,10 @@ void Transform::Initialize()
 	matTrans.MakeTranslation(translation);
 
 	//ワールド行列の合成
-	//変形をリセット
-	matWorld = AliceMathF::MakeIdentity();
-	//ワールド行列にスケーリングを反映
-	matWorld *= matScale;
-	//ワールド行列に回転を反映
-	matWorld *= matRot;
-	//ワールド行列に平行移動を反映
-	matWorld *= matTrans;
-	//親行列の指定がある場合は、掛け算する
+	matRot *= matScale;
+	matTrans *= matRot;
+	matWorld = matTrans;
+
 	if (parent)
 	{
 		matWorld *= parent->matWorld;
@@ -49,6 +44,34 @@ void Transform::TransUpdate(Camera* camera)
 	//スケール、回転、平行移動行列の計算
 	matScale.MakeScaling(scale);
 	matRot.MakeRotation(rotation);
+	matTrans.MakeTranslation(translation);
+
+	//ワールド行列の合成
+	//変形をリセット
+	matRot *= matScale;
+	matTrans *= matRot;
+	matWorld = matTrans;
+
+	//親行列の指定がある場合は、掛け算する
+	if (parent)
+	{
+		matWorld *= parent->matWorld;
+	}
+
+	//定数バッファに書き込み
+	constBuffMap.matWorld = matWorld * camera->GetViewMatrixInv() * camera->GetProjectionMatrix();
+	constBuffMap.world = matWorld;
+	constBuffMap.cameraPos = camera->eye;
+	constBuff->Update(&constBuffMap);
+}
+
+void Transform::TransUpdate2(Camera* camera)
+{
+	AliceMathF::Matrix4 matScale, matRot, matTrans;
+
+	//スケール、回転、平行移動行列の計算
+	matScale.MakeScaling(scale);
+	matRot.MakeRotation2(rotation);
 	matTrans.MakeTranslation(translation);
 
 	//ワールド行列の合成

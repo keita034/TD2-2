@@ -53,6 +53,8 @@ protected:
 	bool flipY = false;
 	char PADDING4[6]={};
 
+	AliceMathF::Vector2 spriteSize;
+
 public:
 
 	Sprite()= default;
@@ -98,6 +100,8 @@ public:
 	/// </summary>
 	/// <param name="textureData">テクスチャ</param>
 	virtual void SetTex(const TextureData& textureData);
+
+	virtual void SetSize(const AliceMathF::Vector2& size);
 
 
 	/// <summary>

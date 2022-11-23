@@ -78,7 +78,7 @@ namespace AliceMathF
 		/// </summary>
 		/// <param name="Rotat"> : 回転角度(単位：ラジアン)</param>
 		void MakeRotation(const Vector3& Rotat);
-
+		void MakeRotation2(const Vector3& Rotat);
 		/// <summary>
 		/// X軸周りの回転行列を作成
 		/// </summary>
